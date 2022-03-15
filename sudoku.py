@@ -1,3 +1,4 @@
+import os, random
 startingBoard = [
     [0,0,0,5,0,0,0,7,9],
     [0,0,5,0,7,9,0,4,8],
@@ -31,7 +32,7 @@ def solveBoard(board):
     # now with an empty square, we will try every possible number
     for i in range(1,10):
         if isValid(board,(row,col),i):
-            print("Trying number " + str(i) + " at position: " + str(row) + " "+str(col))
+            # print("Trying number " + str(i) + " at position: " + str(row) + " "+str(col))
             board[row][col] = i
             if solveBoard(board):
                 return True
@@ -69,5 +70,22 @@ def findSquare(board):
                 return (row,col)    
     return None
 
+def getBoard(path):
+    randomFile  = random.choice(os.listdir(path))
+    # print(randomFile)
+    board = []
+    with open(path +"\\" +randomFile, 'r') as f:
+        line = f.readline()
+        line = line.split(",", 9)
+        for i in range(0,9):
+            row = line[i]
+            row =  list(map(int,list(row)))
+            board.append(row)
+            print(row)
+    # print (board)
+    return board
+    
+startingBoard = getBoard("D:\\SudokuSolver\\sudoku_dataset")
 
 solveBoard(startingBoard)
+printBoard(startingBoard)
