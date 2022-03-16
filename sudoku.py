@@ -70,21 +70,21 @@ def findSquare(board):
                 return (row,col)    
     return None
 
-def getBoard(path):
-    randomFile  = random.choice(os.listdir(path))
-    # print(randomFile)
-    board = []
-    with open(path +"\\" +randomFile, 'r') as f:
-        line = f.readline()
-        line = line.split(",", 9)
-        for i in range(0,9):
-            row = line[i]
-            row =  list(map(int,list(row)))
-            board.append(row)
-            print(row)
-    # print (board)
-    return board
-    
+# def getBoard(path):
+#     randomFile  = random.choice(os.listdir(path))
+#     # print(randomFile)
+#     board = []
+#     with open(path +"\\" +randomFile, 'r') as f:
+#         line = f.readline()
+#         line = line.split(",", 9)
+#         for i in range(0,9):
+#             row = line[i]
+#             row =  list(map(int,list(row)))
+#             board.append(row)
+#             print(row)
+#     # print (board)
+#     return board
+
 startingBoard = getBoard("D:\\SudokuSolver\\sudoku_dataset")
 
 solveBoard(startingBoard)
